@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cityzen-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cityzen
+  template:
+    metadata:
+      labels:
+        app: cityzen
+    spec:
+      containers:
+        - name: cityzen
+          image: sham9394/cityzen:latest
+          ports:
+            - containerPort: 80   
+          resources:
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cityzen-service
+spec:
+  type: LoadBalancer     # change to NodePort if not using cloud
+  selector:
+    app: cityzen
+  ports:
+    - port: 80
+      targetPort: 80

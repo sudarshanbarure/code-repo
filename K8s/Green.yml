@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: test-green
+  name: cityzen-green
   labels:
-    app: test
+    app: cityzen
     version: green
 spec:
   replicas: 4
   selector:
     matchLabels:
-      app: test
+      app: cityzen
       version: green
   template:
     metadata:
       labels:
-        app: test
+        app: cityzen
         version: green
     spec:
       containers:
-        - name: test
+        - name: cityzen
           image: REPLACE_GREEN_IMAGE
           ports:
             - containerPort: 80
@@ -33,7 +33,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: test-green-service
+  name: cityzen-green-service
 spec:
   type: NodePort
   selector:

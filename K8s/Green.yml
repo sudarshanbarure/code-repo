@@ -6,7 +6,7 @@ metadata:
     app: cityzen
     version: green
 spec:
-  replicas: 04
+  replicas: 4
   selector:
     matchLabels:
       app: cityzen

@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cityzen-blue
+  name: test-blue
   labels:
-    app: cityzen
+    app: test
     version: blue
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: cityzen
+      app: test
       version: blue
   template:
     metadata:
       labels:
-        app: cityzen
+        app: test
         version: blue
     spec:
       containers:
-        - name: cityzen
+        - name: test
           image: REPLACE_BLUE_IMAGE
           ports:
             - containerPort: 80
@@ -33,7 +33,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: cityzen-blue-service
+  name: test-blue-service
 spec:
   type: NodePort
   selector:
